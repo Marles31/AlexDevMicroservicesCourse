@@ -10,9 +10,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class GameServiceImpl implements GameService {
+    private final GameRepository gameRepository;
 
-    @Autowired
-    private GameRepository gameRepository;
+    public GameServiceImpl(GameRepository gameRepository) {
+        this.gameRepository = gameRepository;
+    }
 
     @Override
     public Game saveGame(Game game) {
@@ -20,8 +22,7 @@ public class GameServiceImpl implements GameService {
     }
 
     @Override
-    public Game getGameById(Long id){
+    public Game getGameById(Long id) {
         return gameRepository.findById(id).orElseThrow(() -> new GameException(HttpStatus.NOT_FOUND, "ERROR finding game"));
     }
-
 }

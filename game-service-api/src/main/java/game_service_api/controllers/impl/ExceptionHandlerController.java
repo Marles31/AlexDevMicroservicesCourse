@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 @Slf4j
 public class ExceptionHandlerController {
-
     @ExceptionHandler(value = {GameException.class})
     ResponseEntity<ErrorResponse> handleError(GameException gameException) {
 
@@ -23,5 +22,4 @@ public class ExceptionHandlerController {
 
         return ResponseEntity.status(gameException.getHttpStatus()).body(errorResponse);
     }
-
 }

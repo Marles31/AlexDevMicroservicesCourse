@@ -6,19 +6,18 @@ import game_service_api.services.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class GameController implements GameApi {
+    private final GameService gameService;
 
-    @Autowired
-    private GameService gameService;
+    public GameController(GameService gameService) {
+        this.gameService = gameService;
+    }
 
     @Override
-    public ResponseEntity<Game> saveGame(@RequestBody Game game) {
+    public ResponseEntity<Game> saveGame(@RequestHeader("userIdRequest") String userId, @RequestBody Game game) {
         Game savedGame = gameService.saveGame(game);
         return new ResponseEntity<>(savedGame, HttpStatus.CREATED);
     }
@@ -27,5 +26,4 @@ public class GameController implements GameApi {
     public ResponseEntity<Game> getNameById(Long id) {
         return ResponseEntity.ok(gameService.getGameById(id));
     }
-
 }

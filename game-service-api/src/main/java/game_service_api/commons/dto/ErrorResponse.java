@@ -8,8 +8,6 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ErrorResponse {
-
     private Integer codeStatus;
     private String message;
-
 }

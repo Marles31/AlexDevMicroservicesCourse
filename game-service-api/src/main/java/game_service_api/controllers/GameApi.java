@@ -7,10 +7,9 @@ import org.springframework.web.bind.annotation.*;
 
 @RequestMapping(ApiPathVariables.V1_ROUTE + ApiPathVariables.GAME_ROUTE)
 public interface GameApi {
-
     @PostMapping
-    ResponseEntity<Game> saveGame(@RequestBody Game game);
+    ResponseEntity<Game> saveGame(@RequestHeader String userId, @RequestBody Game game);
+
     @GetMapping("/{id}")
     ResponseEntity<Game> getNameById(@PathVariable Long id);
-
 }
