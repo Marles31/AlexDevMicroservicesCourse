@@ -1,0 +1,21 @@
+jwt:
+  secret: fdshfjdshfjdshfjh5h45hijfidwnfsdnvko39u453295u43nfsjdnvksdnvidsniksdnhgtihsdighsdfiusdahbfjsabnjfbhsajfbasjbhfjasbfjbsafjbsajfbjasbfjsabfjsabfjasbfjkbsfjk
+
+server:
+  port: 8081
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/users
+    username: postgres
+    password: 1234
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        format_sql: true
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+    org.hibernate.type.descriptor.sql.BasicBinder: trace
