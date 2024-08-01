@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RequestMapping(ApiPathConstants.V1_ROUTE + ApiPathConstants.AUTH_ROUTE)
 public interface AuthApi {
-    @PostMapping(value = "register")
+    @PostMapping(value = "/register")
     ResponseEntity<TokenResponse> createUser(@RequestBody @Valid UserRequest userRequest);
 
     @GetMapping
